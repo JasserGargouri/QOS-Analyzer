@@ -196,7 +196,7 @@ def display_app_header7(main_txt,sub_txt,is_sidebar = False):
         st.sidebar.markdown(html_temp, unsafe_allow_html = True)
     else: 
         st.markdown(html_temp, unsafe_allow_html = True)
-@st.cache(allow_output_mutation=True)
+#@st.cache_data(allow_output_mutation=True)
 def get_base64_of_bin_file(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
@@ -230,11 +230,11 @@ page_title="Optimisation de la QoS des réseaux mobiles"
 st.text("")
 
 imagelog = Image.open('log.png')
-ccol8111, ccl222,ccol4333= st.beta_columns(3)
+ccol8111, ccl222,ccol4333= st.columns(3)
 
 with ccl222:
 	st.image(imagelog, caption='')
-ccol111, ccol222,ccol333= st.beta_columns(3)
+ccol111, ccol222,ccol333= st.columns(3)
 
 #***************** PAGE LOGIN ********************
 result = False
@@ -246,7 +246,7 @@ if choicd == "Connexion":
  display_app_header2(main_txt='Section de connexion', sub_txt='')
  #st.subheader("Section de connexion")
  
- ccol11, ccol22= st.beta_columns(2)
+ ccol11, ccol22= st.columns(2)
  with ccol11:
   display_app_header7(main_txt="Nom d'utilisateur", sub_txt='')
   username = st.text_input("",key='675')
@@ -265,7 +265,7 @@ if choicd == "Connexion":
       st.warning(" Nom d'utilisateur ou Mot de passe Incorrect ")
 if choicd == "S'inscrire":
  display_app_header2(main_txt='Créer un compte', sub_txt='')
- ccol1, ccol2= st.beta_columns(2)
+ ccol1, ccol2= st.columns(2)
  with ccol1:
   display_app_header7(main_txt="Nom d'utilisateur", sub_txt='')
   new_user = st.text_input("",key = '326546')
@@ -323,14 +323,14 @@ if result:
         image1 = Image.open('RSCP.png')
         st.image(image1, caption='')
         
-        col111, col222 = st.beta_columns(2)
+        col111, col222 = st.columns(2)
         MIN=str(df['RSCP (active)'].min())
         MAX=str(df['RSCP (active)'].max())
         MOYE=str(round((df['RSCP (active)'].mean()),1))
         FMIN=df['RSCP (active)'].min()
         FMAX=df['RSCP (active)'].max()
         FMOYE=df['RSCP (active)'].mean()
-        col111, col333= st.beta_columns(2)
+        col111, col333= st.columns(2)
         with col111:
          display_app_header4(main_txt='   RSCP MIN :'+' '+MIN)
 
@@ -342,7 +342,7 @@ if result:
        
         st.write('')
         
-        col7, col8,col9, col10 = st.beta_columns(4) 
+        col7, col8,col9, col10 = st.columns(4) 
         with col7:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne couverture :')
         with col8:
@@ -355,7 +355,7 @@ if result:
          BC = st.text_input('')
          st.write( f"{BC}" f" ≤ VALEUR < "f"{TBC}" )
         #with col19:
-        col3, col4,col5, col6 = st.beta_columns(4) 
+        col3, col4,col5, col6 = st.columns(4) 
         with col3:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne couverture:')
         with col4:
@@ -411,7 +411,7 @@ if result:
         FMINec=df['Ec/N0 (active)'].min()
         FMAXec=df['Ec/N0 (active)'].max()
         FMOYEec=df['Ec/N0 (active)'].mean()
-        col111, col222 = st.beta_columns(2)
+        col111, col222 = st.columns(2)
         with col111:
          display_app_header4(main_txt='Ec/N0 MIN :'+' '+MINec)
          
@@ -424,7 +424,7 @@ if result:
        
         st.write('')
 
-        col7, col8,col9, col10 = st.beta_columns(4) 
+        col7, col8,col9, col10 = st.columns(4) 
         with col7:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne qualité:')
         with col8:
@@ -438,7 +438,7 @@ if result:
          BQ = st.text_input('',key='876')
          st.write( f"{BQ}" f" ≤ VALEUR < "f"{TBQ}" )
 
-        col3, col4,col5, col6 = st.beta_columns(4) 
+        col3, col4,col5, col6 = st.columns(4) 
         with col3:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne qualité:')
         with col4:
@@ -484,7 +484,7 @@ if result:
          st.image(image3, caption='')
          st.write('')
          st.write('')
-         col07, col08,col011,col09, col010 = st.beta_columns(5)
+         col07, col08,col011,col09, col010 = st.columns(5)
 
          with col08:
           DL=st.checkbox('Down Link')
@@ -497,7 +497,7 @@ if result:
              display_app_header(main_txt='Débit DownLink', sub_txt='')
              st.write('')
              
-             col111111, col222222 = st.beta_columns(2)
+             col111111, col222222 = st.columns(2)
              MINDL3G=str(df['Application throughput downlink'].min())
              MAXDL3G=str(df['Application throughput downlink'].max())
              MOYEDL3G=str(round(df['Application throughput downlink'].mean(),1))
@@ -515,7 +515,7 @@ if result:
 
              st.write('') 
              st.write('')
-             coll7, coll8,coll9, coll10 = st.beta_columns(4) 
+             coll7, coll8,coll9, coll10 = st.columns(4) 
              with coll7:
                display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne DL débit:')
              with coll8:
@@ -529,7 +529,7 @@ if result:
               BDL = st.text_input('',key='584')
               st.write( f"{BDL}" f" ≤ VALEUR < "f"{TBDL}" )
 
-             coll3, coll4,coll5, coll6 = st.beta_columns(4) 
+             coll3, coll4,coll5, coll6 = st.columns(4) 
              with coll3:
                 display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne DL débit:')
              with coll4:
@@ -570,7 +570,7 @@ if result:
              display_app_header(main_txt='Débit UpLink', sub_txt='')
              st.write('')
              
-             col1111111, col2222222 = st.beta_columns(2)
+             col1111111, col2222222 = st.columns(2)
              MINUL3G=str(df['Application throughput uplink'].min())
              MAXUL3G=str(df['Application throughput uplink'].max())
              MOYEUL3G=str(round(df['Application throughput uplink'].mean(),1))
@@ -588,7 +588,7 @@ if result:
 
              st.write('')
              st.write('')
-             cooll7, cooll8,cooll9, cooll10 = st.beta_columns(4) 
+             cooll7, cooll8,cooll9, cooll10 = st.columns(4) 
              with cooll7:
                display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne UL débit:')
              with cooll8:
@@ -602,7 +602,7 @@ if result:
               BUL = st.text_input('',key='66546')
               st.write( f"{BUL}" f" ≤ VALEUR < "f"{TBUL}" )
 
-             cooll3, cooll4,cooll5, cooll6 = st.beta_columns(4) 
+             cooll3, cooll4,cooll5, cooll6 = st.columns(4) 
              with cooll3:
                 display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne UL débit:')
              with cooll4:
@@ -660,7 +660,7 @@ if result:
       image1 = Image.open('RSRP.png')
       st.image(image1, caption='')
       st.write('')
-      col1111, col2222= st.beta_columns(2)
+      col1111, col2222= st.columns(2)
       MIN4G=str(df['RSRP (pcell)'].min())
       MAX4G=str(df['RSRP (pcell)'].max())
       MOYE4G=str(round(df['RSRP (pcell)'].mean(),1))
@@ -680,7 +680,7 @@ if result:
       FMIN4G=df['RSRP (pcell)'].min()
       FMAX4G=df['RSRP (pcell)'].max()
       FMOYE4G=df['RSRP (pcell)'].mean()
-      col7, col8,col9, col10 = st.beta_columns(4) 
+      col7, col8,col9, col10 = st.columns(4) 
       with col7:
        display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne couverture:')
       with col8:
@@ -694,7 +694,7 @@ if result:
        BC4G = st.text_input('',key='87546')
        st.write( f"{BC4G}" f" ≤ VALEUR < "f"{TBC4G}" )
 
-      col3, col4,col5, col6 = st.beta_columns(4) 
+      col3, col4,col5, col6 = st.columns(4) 
       with col3:
        display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne couverture:')
       with col4:
@@ -737,7 +737,7 @@ if result:
       image2 = Image.open('RSRQ.png')
       st.image(image2, caption='')
       st.write('')
-      col11111, col22222 = st.beta_columns(2)
+      col11111, col22222 = st.columns(2)
       MINsc4G=str(df['RSRQ (pcell)'].min())
       MAXsc4G=str(df['RSRQ (pcell)'].max())
       MOYEsc4G=str(round(df['RSRQ (pcell)'].mean(),1))
@@ -757,7 +757,7 @@ if result:
 
       st.write('')
 
-      col77, col88,col99, col100 = st.beta_columns(4) 
+      col77, col88,col99, col100 = st.columns(4) 
       with col77:
        display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne Qualié:')
       with col88:
@@ -771,7 +771,7 @@ if result:
        BCsc4G = st.text_input('',key='6783753')
        st.write( f"{BCsc4G}" f" ≤ VALEUR < "f"{TBCsc4G}" )
 
-      col33, col44,col55, col66 = st.beta_columns(4) 
+      col33, col44,col55, col66 = st.columns(4) 
       with col33:
        display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne Qualité:')
       with col44:
@@ -815,7 +815,7 @@ if result:
          st.image(image3, caption='')
          st.write('')
          st.write('')
-         col07, col08,col011,col09, col010 = st.beta_columns(5)
+         col07, col08,col011,col09, col010 = st.columns(5)
 
          with col08:
           DL=st.checkbox('Down Link')
@@ -828,7 +828,7 @@ if result:
              display_app_header(main_txt='Débit Down Link', sub_txt='')
              st.write('')
              
-             col111111, col222222= st.beta_columns(2)
+             col111111, col222222= st.columns(2)
              MINDL4G=str(df['RLC downlink throughput'].min())
              MAXDL4G=str(df['RLC downlink throughput'].max())
              MOYEDL4G=str(round(df['RLC downlink throughput'].mean(),1))
@@ -846,7 +846,7 @@ if result:
 
              st.write('') 
              st.write('')
-             coll7, coll8,coll9, coll10 = st.beta_columns(4) 
+             coll7, coll8,coll9, coll10 = st.columns(4) 
              with coll7:
                display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne DL débit:')
              with coll8:
@@ -860,7 +860,7 @@ if result:
               BDL = st.text_input('',key='584')
               st.write( f"{BDL}" f" ≤ VALEUR < "f"{TBDL}" )
 
-             coll3, coll4,coll5, coll6 = st.beta_columns(4) 
+             coll3, coll4,coll5, coll6 = st.columns(4) 
              with coll3:
                 display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne DL débit:')
              with coll4:
@@ -902,7 +902,7 @@ if result:
              display_app_header(main_txt='Débit Up Link', sub_txt='')
              st.write('')
              
-             col1111111, col2222222= st.beta_columns(2)
+             col1111111, col2222222= st.columns(2)
              MINUL4G=str(df['RLC uplink throughput'].min())
              MAXUL4G=str(df['RLC uplink throughput'].max())
              MOYEUL4G=str(round(df['RLC uplink throughput'].mean(),1))
@@ -920,7 +920,7 @@ if result:
 
              st.write('')
              st.write('')
-             cooll7, cooll8,cooll9, cooll10 = st.beta_columns(4) 
+             cooll7, cooll8,cooll9, cooll10 = st.columns(4) 
              with cooll7:
                display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne UL débit:')
              with cooll8:
@@ -934,7 +934,7 @@ if result:
               BUL = st.text_input('',key='66546')
               st.write( f"{BUL}" f" ≤ VALEUR < "f"{TBUL}" )
 
-             cooll3, cooll4,cooll5, cooll6 = st.beta_columns(4) 
+             cooll3, cooll4,cooll5, cooll6 = st.columns(4) 
              with cooll3:
                 display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne UL débit:')
              with cooll4:
@@ -989,7 +989,7 @@ if result:
       FMIN=df['RXLEV (active)'].min()
       FMAX=df['RXLEV (active)'].max()
       FMOYE=df['RXLEV (active)'].mean()
-      col111, col333= st.beta_columns(2)
+      col111, col333= st.columns(2)
       with col111:
          display_app_header4(main_txt='   RXLEV MIN :'+' '+MIN )  
       with col333:
@@ -1000,7 +1000,7 @@ if result:
        
       st.write('')      
       
-      col7, col8,col9, col10 = st.beta_columns(4) 
+      col7, col8,col9, col10 = st.columns(4) 
       with col7:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne couverture :')
       with col8:
@@ -1013,7 +1013,7 @@ if result:
        BC = st.text_input('')
        st.write( f"{BC}" f" ≤ VALEUR < "f"{TBC}" )
         #with col19:
-      col3, col4,col5, col6 = st.beta_columns(4) 
+      col3, col4,col5, col6 = st.columns(4) 
       with col3:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne couverture:')
       with col4:
@@ -1053,7 +1053,7 @@ if result:
         image2 = Image.open('RXQUAL.png')
         st.image(image2, caption='')
         st.write('')
-        #col111, col222,col333,col444= st.beta_columns(4)
+        #col111, col222,col333,col444= st.columns(4)
         MINec=str(df['RXQUAL (active)'].min())
         MAXec=str(df['RXQUAL (active)'].max())
         MOYEec=str(round((df['RXQUAL (active)'].mean()),1))
@@ -1061,7 +1061,7 @@ if result:
         FMAXec=df['RXQUAL (active)'].max()
         FMOYEec=df['RXQUAL (active)'].mean()
 
-        col1111, col3333= st.beta_columns(2)
+        col1111, col3333= st.columns(2)
         with col1111:
          display_app_header4(main_txt='   RXQUAL MIN :'+' '+MINec)
           
@@ -1071,7 +1071,7 @@ if result:
 
         display_app_header4(main_txt='RXQUAL MOYENNE :'+' '+MOYEec)
 
-        col7, col8,col9, col10 = st.beta_columns(4) 
+        col7, col8,col9, col10 = st.columns(4) 
         with col7:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du trés bonne qualité:')
         with col8:
@@ -1085,7 +1085,7 @@ if result:
          BQ = st.text_input('',key='3453')
          st.write( f"{BQ}" f" ≤ VALEUR < "f"{TBQ}" )
 
-        col3, col4,col5, col6 = st.beta_columns(4) 
+        col3, col4,col5, col6 = st.columns(4) 
         with col3:
          display_app_header3(main_txt='', sub_txt='',subsub_txt='Seuil du moyenne qualité:')
         with col4:
